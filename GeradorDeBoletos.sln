@@ -13,6 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain Layer", "3. Domai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infra Layer", "4. Infra Layer", "{B7907039-4F0D-4065-BF87-2F7B717235E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorDeBoletos.Services", "GeradorDeBoletos.Services\GeradorDeBoletos.Services.csproj", "{2B80009C-6F97-476C-96B1-D51EEB31D33D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorDeBoletos.Domain", "GeradorDeBoletos.Domain\GeradorDeBoletos.Domain.csproj", "{3238E03F-6D8D-4E63-B2F3-30831467919E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorDeBoletos.Infra.Data", "GeradorDeBoletos.Infra.Data\GeradorDeBoletos.Infra.Data.csproj", "{5FE97F04-59C1-488D-A20D-6F9FCAB25D30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{941FD052-5D00-4D71-93C4-1E83B56BAD6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeBoletos.UnitTests", "GerenciadorDeBoletos.UnitTests\GerenciadorDeBoletos.UnitTests.csproj", "{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,11 +33,31 @@ Global
 		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B80009C-6F97-476C-96B1-D51EEB31D33D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B80009C-6F97-476C-96B1-D51EEB31D33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B80009C-6F97-476C-96B1-D51EEB31D33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B80009C-6F97-476C-96B1-D51EEB31D33D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3238E03F-6D8D-4E63-B2F3-30831467919E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3238E03F-6D8D-4E63-B2F3-30831467919E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3238E03F-6D8D-4E63-B2F3-30831467919E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3238E03F-6D8D-4E63-B2F3-30831467919E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FE97F04-59C1-488D-A20D-6F9FCAB25D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE97F04-59C1-488D-A20D-6F9FCAB25D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE97F04-59C1-488D-A20D-6F9FCAB25D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE97F04-59C1-488D-A20D-6F9FCAB25D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E} = {BAC5D1FD-6C43-4311-AB40-8B2356260FE6}
+		{2B80009C-6F97-476C-96B1-D51EEB31D33D} = {34F291B3-F363-4C81-9998-FBE545F6F64A}
+		{3238E03F-6D8D-4E63-B2F3-30831467919E} = {996A7A8A-5C36-47C2-AFBB-EB07290606AF}
+		{5FE97F04-59C1-488D-A20D-6F9FCAB25D30} = {B7907039-4F0D-4065-BF87-2F7B717235E7}
+		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327} = {941FD052-5D00-4D71-93C4-1E83B56BAD6D}
 	EndGlobalSection
 EndGlobal
