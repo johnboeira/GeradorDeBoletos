@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorDeBoletos.Web.API", "GeradorDeBoletos.Web.API\GeradorDeBoletos.Web.API.csproj", "{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation Layer", "1. Presentation Layer", "{BAC5D1FD-6C43-4311-AB40-8B2356260FE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Service Layer", "2. Service Layer", "{34F291B3-F363-4C81-9998-FBE545F6F64A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain Layer", "3. Domain Layer", "{996A7A8A-5C36-47C2-AFBB-EB07290606AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infra Layer", "4. Infra Layer", "{B7907039-4F0D-4065-BF87-2F7B717235E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E} = {BAC5D1FD-6C43-4311-AB40-8B2356260FE6}
+	EndGlobalSection
+EndGlobal
