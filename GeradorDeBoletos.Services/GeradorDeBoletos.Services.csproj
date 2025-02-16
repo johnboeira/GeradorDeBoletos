@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GeradorDeBoletos.Infra.Data\GeradorDeBoletos.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

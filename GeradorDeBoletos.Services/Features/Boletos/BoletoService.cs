@@ -1,0 +1,45 @@
+﻿using GeradorDeBoletos.Domain.Features.Boletos;
+using GeradorDeBoletos.Domain.Features.Shared;
+using GeradorDeBoletos.Infra.Data.Features.Bancos;
+using GeradorDeBoletos.Infra.Data.Features.Boletos;
+using Microsoft.Extensions.Logging;
+
+namespace GeradorDeBoletos.Services.Features.Boletos;
+
+public class BoletoService
+{
+    public BoletoRepository _boletoRepository;
+    public BancoRepository _bancoRepository;
+    private ILogger<BoletoService> _logger;
+
+    public BoletoService(BoletoRepository boletoRepository, BancoRepository bancoRepository, ILogger<BoletoService> logger)
+    {
+        _boletoRepository = boletoRepository;
+        _bancoRepository = bancoRepository;
+        _logger = logger;
+    }
+
+    public async Task CriarBoletoAsync(Boleto boleto)
+    {
+        var bancoExiste = await _bancoRepository.ExisteAsync(boleto.Id);
+
+        if (bancoExiste == false)
+        {
+            var exception = new NotFoundException($"Não foi encontrado banco com id: {boleto.Id}");
+            _logger.LogError(exception.Message);
+            throw exception;
+        }
+
+        await _boletoRepository.CriaAsync(boleto);
+    }
+
+    public async Task<IEnumerable<Boleto>> BuscaTodos()
+    {
+        return await _boletoRepository.BuscaTodos();
+    }
+
+    public async Task<Boleto> Busca(int id)
+    {
+        return await _boletoRepository.Busca(id);
+    }
+}
