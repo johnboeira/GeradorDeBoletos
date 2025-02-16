@@ -1,5 +1,14 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using GeradorDeBoletos.Infra.Data;
+using GeradorDeBoletos.Infra.Data.Features.Bancos;
+using GeradorDeBoletos.Infra.Data.Features.Boletos;
+using GeradorDeBoletos.Services.Features.Bancos;
+using GeradorDeBoletos.Services.Features.Boletos;
+using GeradorDeBoletos.Web.API.DTOs.Features.Bancos;
+using GeradorDeBoletos.Web.API.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace GeradorDeBoletos.Web.API;
 
@@ -9,11 +18,30 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        // Adiciona dependências
         builder.Services.AddDbContext<GerardorDeBoletosDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+        builder.Services.AddScoped<BancoRepository>();
+        builder.Services.AddScoped<BancoService>();
+
+        builder.Services.AddScoped<BoletoRepository>();
+        builder.Services.AddScoped<BoletoService>();
+
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Error()
+            .WriteTo.Console()
+            .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+        builder.Host.UseSerilog();
+
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         builder.Services.AddControllers();
+
+        builder.Services.AddFluentValidationAutoValidation();
+        builder.Services.AddValidatorsFromAssemblyContaining<BancoCriarDTO>();
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -32,6 +60,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.UseMiddleware(typeof(GlobalErrorHandlingMiddleware));
 
         app.UseHttpsRedirection();
 
