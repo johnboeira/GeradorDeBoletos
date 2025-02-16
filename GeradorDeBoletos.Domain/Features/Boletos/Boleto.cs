@@ -9,10 +9,30 @@ public class Boleto : Entidade
     public string CPFCNPJPagador { get; set; }
     public string NomeBeneficiario { get; set; }
     public string CPFCNPJBeneficiario { get; set; }
-    public decimal Valor { get; set; }
+    private decimal _valorSemJuros;
+
+    public decimal Valor
+    {
+        get => AplicarJuros();
+        set => _valorSemJuros = value;
+    }
+
     public DateTime DataVencimento { get; set; }
     public string Observacao { get; set; }
 
     public int BancoId { get; set; }
     public Banco Banco { get; set; }
+
+    private decimal AplicarJuros()
+    {
+        if (Banco != null && DataVencimento.Date > DateTime.Now.Date)
+        {
+            var valorParaMultiplicarJuros = Banco.PercentualDeJuros / 100;
+            var valorAcrescimoDeJuros = _valorSemJuros * valorParaMultiplicarJuros;
+
+            return _valorSemJuros + valorAcrescimoDeJuros;
+        }
+
+        return _valorSemJuros;
+    }
 }
