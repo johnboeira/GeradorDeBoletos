@@ -25,7 +25,7 @@ public class Boleto : Entidade
 
     private decimal AplicarJuros()
     {
-        if (Banco != null && DataVencimento.Date > DateTime.Now.Date)
+        if (Banco != null && DateTime.Now.Date > DataVencimento.Date)
         {
             var valorParaMultiplicarJuros = Banco.PercentualDeJuros / 100;
             var valorAcrescimoDeJuros = _valorSemJuros * valorParaMultiplicarJuros;
