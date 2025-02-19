@@ -1,10 +1,5 @@
 ﻿using GeradorDeBoletos.Domain.Features.Bancos;
 using GeradorDeBoletos.Domain.Features.Boletos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GerenciadorDeBoletos.UnitTests.Domain.Features.Boletos;
 
