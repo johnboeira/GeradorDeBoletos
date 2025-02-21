@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GeradorDeBoletos.Infra.Data\GeradorDeBoletos.Infra.Data.csproj" />
+    <ProjectReference Include="..\GeradorDeBoletos.Infra\GeradorDeBoletos.Infra.csproj" />
   </ItemGroup>
 
 </Project>

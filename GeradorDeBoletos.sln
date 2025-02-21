@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorDeBoletos.Web.API", "GeradorDeBoletos.Web.API\GeradorDeBoletos.Web.API.csproj", "{655AB7D9-0A9E-4B49-8BE3-CF3315489E4E}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{941FD052-5D00-4D71-93C4-1E83B56BAD6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeBoletos.UnitTests", "GerenciadorDeBoletos.UnitTests\GerenciadorDeBoletos.UnitTests.csproj", "{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorDeBoletos.Infra", "GeradorDeBoletos.Infra\GeradorDeBoletos.Infra.csproj", "{4691B3F9-1842-466D-9866-803979B26141}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4691B3F9-1842-466D-9866-803979B26141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4691B3F9-1842-466D-9866-803979B26141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4691B3F9-1842-466D-9866-803979B26141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4691B3F9-1842-466D-9866-803979B26141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{3238E03F-6D8D-4E63-B2F3-30831467919E} = {996A7A8A-5C36-47C2-AFBB-EB07290606AF}
 		{5FE97F04-59C1-488D-A20D-6F9FCAB25D30} = {B7907039-4F0D-4065-BF87-2F7B717235E7}
 		{4347CAB0-2D29-4674-AE57-2A0CD1C6E327} = {941FD052-5D00-4D71-93C4-1E83B56BAD6D}
+		{4691B3F9-1842-466D-9866-803979B26141} = {B7907039-4F0D-4065-BF87-2F7B717235E7}
 	EndGlobalSection
 EndGlobal
