@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GeradorDeBoletos.Domain.Features.Usuarios;
 using GeradorDeBoletos.Web.API.DTOs.Features.Usuarios;
-using GeradorDeUsuarios.Services.Features.Usuarios;
+using GeradorDeBoletos.Services.Features.Usuarios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Usuarios;
