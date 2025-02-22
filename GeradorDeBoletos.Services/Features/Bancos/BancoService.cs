@@ -19,11 +19,11 @@ public class BancoService
 
     public async Task<IEnumerable<Banco>> BuscaTodos()
     {
-        return await _bancoRepository.BuscaTodos();
+        return await _bancoRepository.BuscaTodosAsync();
     }
 
     public async Task<Banco> Busca(int id)
     {
-        return await _bancoRepository.Busca(id);
+        return await _bancoRepository.BuscaAsync(id);
     }
 }

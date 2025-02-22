@@ -44,7 +44,7 @@ public class BoletoCriarDTO
                 .MaximumLength(500).WithMessage("A observação deve ter no máximo 500 caracteres");
 
             RuleFor(x => x.BancoId)
-                .GreaterThan(0).WithMessage("O id do banco deve ser um valor válido");
+                .GreaterThan(0).WithMessage("O id do banco deve ser um valor válido, maior que 1");
         }
     }
 }
