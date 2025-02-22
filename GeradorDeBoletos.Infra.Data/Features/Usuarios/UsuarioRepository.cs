@@ -23,4 +23,11 @@ public class UsuarioRepository
     {
         return await _dbContext.Usuarios.AnyAsync(b => b.Email == email);
     }
+
+    public async Task<int> ExisteLoginAsync(string email, string senha)
+    {
+        return await _dbContext.Usuarios.Where(u => u.Email == email && u.Senha == senha)    
+            .Select(u => u.Id)
+            .FirstOrDefaultAsync();
+    }
 }

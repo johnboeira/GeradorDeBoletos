@@ -1,4 +1,4 @@
-﻿using GeradorDeBoletos.Domain.Features.Shared;
+﻿using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -28,7 +28,7 @@ public class GlobalErrorHandlingMiddleware
     private static Task HandleExceptionAsync(HttpContext httpContext, Exception ex)
     {
         HttpStatusCode status;
-        string stackTrace;
+        string stackTrace = string.Empty;
         string message;
         var exceptionType = ex.GetType();
 
@@ -36,11 +36,18 @@ public class GlobalErrorHandlingMiddleware
         {
             message = ex.Message;
             status = HttpStatusCode.NotFound;
-            stackTrace = ex.StackTrace;
+        } else if (exceptionType == typeof(InvalidLogin))
+        {
+            message = ex.Message;
+            status = HttpStatusCode.Unauthorized;
+        } else if (exceptionType == typeof(AlreadyExistsException))
+        {
+            message = ex.Message;
+            status = HttpStatusCode.BadRequest;
         }
         else
         {
-            message = ex.Message;
+            message = ex.Message + ex.InnerException?.Message;
             status = HttpStatusCode.InternalServerError;
             stackTrace = ex.StackTrace;
         }

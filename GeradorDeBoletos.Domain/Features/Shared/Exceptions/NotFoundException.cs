@@ -1,4 +1,4 @@
-﻿namespace GeradorDeBoletos.Domain.Features.Shared;
+﻿namespace GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 
 public class NotFoundException : Exception
 {

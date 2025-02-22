@@ -1,5 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using GeradorDeBoletos.Domain.Features.Shared;
+using GeradorDeBoletos.Infra.Auth;
 using GeradorDeBoletos.Infra.Criptografia;
 using GeradorDeBoletos.Infra.Data;
 using GeradorDeBoletos.Infra.Data.Features.Bancos;
@@ -7,10 +9,12 @@ using GeradorDeBoletos.Infra.Data.Features.Boletos;
 using GeradorDeBoletos.Infra.Data.Features.Usuarios;
 using GeradorDeBoletos.Services.Features.Bancos;
 using GeradorDeBoletos.Services.Features.Boletos;
+using GeradorDeBoletos.Services.Features.GeradorDeToken;
 using GeradorDeBoletos.Services.Features.Usuarios;
 using GeradorDeBoletos.Web.API.DTOs.Features.Bancos;
 using GeradorDeBoletos.Web.API.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 namespace GeradorDeBoletos.Web.API;
@@ -34,6 +38,14 @@ public class Program
         builder.Services.AddScoped<SenhaEncriptador>();
         builder.Services.AddScoped<UsuarioRepository>();
         builder.Services.AddScoped<UsuarioService>();
+
+        var minutosDeDuracao = builder.Configuration.GetValue<uint>("Settings:JWT:minutosDeDuracao");
+        var chaveDeAssinatura = builder.Configuration.GetValue<string>("Settings:JWT:chaveDeAssinatura");
+
+        builder.Services.AddScoped<IGeradorDeTokenDeAcesso>(
+            options => new GeradorDeTokenDeAcesso(minutosDeDuracao, chaveDeAssinatura));
+
+        builder.Services.AddScoped<GeradorDeTokenService>();
 
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Error()
