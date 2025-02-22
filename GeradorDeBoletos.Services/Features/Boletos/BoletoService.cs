@@ -1,5 +1,5 @@
 ﻿using GeradorDeBoletos.Domain.Features.Boletos;
-using GeradorDeBoletos.Domain.Features.Shared;
+using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using GeradorDeBoletos.Infra.Data.Features.Bancos;
 using GeradorDeBoletos.Infra.Data.Features.Boletos;
 using Microsoft.Extensions.Logging;

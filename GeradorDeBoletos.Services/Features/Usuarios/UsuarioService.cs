@@ -1,4 +1,5 @@
 ﻿using GeradorDeBoletos.Domain.Features.Shared;
+using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using GeradorDeBoletos.Domain.Features.Usuarios;
 using GeradorDeBoletos.Infra.Criptografia;
 using GeradorDeBoletos.Infra.Data.Features.Usuarios;
@@ -25,7 +26,7 @@ public class UsuarioService
 
         if (usuarioJaExiste == true)
         {
-            var exception = new NotFoundException($"Já existe usuário com email: {usuario.Email}");
+            var exception = new AlreadyExistsException($"Já existe usuário com email: {usuario.Email}");
             _logger.LogError(exception.Message);
             throw exception;
         }
