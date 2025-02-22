@@ -1,6 +1,5 @@
 ﻿using GeradorDeBoletos.Domain.Features.Bancos;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 
 namespace GeradorDeBoletos.Infra.Data.Features.Bancos;
 
@@ -20,18 +19,38 @@ public class BancoRepository
         await _dbContext.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Busca usando asNoTracking
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public async Task<bool> ExisteAsync(int id)
     {
-        return await _dbContext.Bancos.AnyAsync(b => b.Id == id);
+        return await _dbContext.Bancos
+            .AsNoTracking()
+            .AnyAsync(b => b.Id == id);
     }
 
-    public async Task<IEnumerable<Banco>> BuscaTodos()
+    /// <summary>
+    /// Busca usando asNoTracking
+    /// </summary>
+    /// <returns></returns>
+    public async Task<IEnumerable<Banco>> BuscaTodosAsync()
     {
-        return await _dbContext.Bancos.ToListAsync();
+        return await _dbContext.Bancos
+            .AsNoTracking()
+            .ToListAsync();
     }
 
-    public async Task<Banco> Busca(int id)
+    /// <summary>
+    /// Busca usando asNoTracking
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<Banco> BuscaAsync(int id)
     {
-        return await _dbContext.Bancos.SingleOrDefaultAsync(b => b.Id == id);
+        return await _dbContext.Bancos
+            .AsNoTracking()
+            .SingleOrDefaultAsync(b => b.Id == id);
     }
 }
