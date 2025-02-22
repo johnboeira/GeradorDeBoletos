@@ -23,7 +23,7 @@ public class UsuarioEntityConfiguration : IEntityTypeConfiguration<Usuario>
 
         builder.Property(b => b.Senha)
                .IsRequired(true)
-               .HasMaxLength(80)
-               .HasColumnType("varchar(80)");
+               .HasMaxLength(300)
+               .HasColumnType("varchar(300)");
     }
 }

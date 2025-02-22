@@ -7,7 +7,7 @@ public class SenhaEncriptador
 {
     public string Encriptar(string senha)
     {
-        var chaveAdicional = "aquivocepodecolocarqlqrstring";
+        var chaveAdicional = "qualquerstringaqui";
 
         var novaSenha = $"{senha}{chaveAdicional}";
 

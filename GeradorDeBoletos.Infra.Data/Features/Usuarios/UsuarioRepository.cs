@@ -1,5 +1,4 @@
-﻿using GeradorDeBoletos.Domain.Features.Bancos;
-using GeradorDeBoletos.Domain.Features.Usuarios;
+﻿using GeradorDeBoletos.Domain.Features.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeradorDeBoletos.Infra.Data.Features.Usuarios;
