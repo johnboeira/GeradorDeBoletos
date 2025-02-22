@@ -21,11 +21,11 @@ public class BoletoService
 
     public async Task CriarBoletoAsync(Boleto boleto)
     {
-        var bancoExiste = await _bancoRepository.ExisteAsync(boleto.Id);
+        var bancoExiste = await _bancoRepository.ExisteAsync(boleto.BancoId);
 
-        if (bancoExiste == false)
+        if (bancoExiste is false)
         {
-            var exception = new NotFoundException($"Não foi encontrado banco com id: {boleto.Id}");
+            var exception = new NotFoundException($"Não foi encontrado banco com id: {boleto.BancoId}");
             _logger.LogError(exception.Message);
             throw exception;
         }
