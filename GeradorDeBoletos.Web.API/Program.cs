@@ -44,8 +44,8 @@ public class Program
 
         builder.Services.AddScoped<IGeradorDeTokenDeAcesso>(
             options => new GeradorDeTokenDeAcesso(minutosDeDuracao, chaveDeAssinatura));
-
         builder.Services.AddScoped<GeradorDeTokenService>();
+        builder.Services.AddScoped<IValidadorJwtToken>(opt => new ValidadorJwtToken(chaveDeAssinatura));
 
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Error()
