@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GeradorDeBoletos.Domain.Features.Boletos;
 using GeradorDeBoletos.Services.Features.Boletos;
+using GeradorDeBoletos.Web.API.Attributes;
 using GeradorDeBoletos.Web.API.DTOs.Features.Boletos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace GeradorDeBoletos.Web.API.Controllers.Features.Boletos;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authentication]
 public class BoletoController : ControllerBase
 {
     private BoletoService _boletoService;

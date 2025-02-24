@@ -5,11 +5,11 @@ using System.Security.Claims;
 
 namespace GeradorDeBoletos.Infra.Auth;
 
-public class ValidadorJwtToken : GeradorDeChaveDeSeguranca, IValidadorJwtToken
+public class ValidadorToken : GeradorDeChaveDeSeguranca, IValidadorToken
 {
     private readonly string _chaveDeAssinatura;
 
-    public ValidadorJwtToken(string chaveDeAssinatura)
+    public ValidadorToken(string chaveDeAssinatura)
     {
         _chaveDeAssinatura = chaveDeAssinatura;
     }

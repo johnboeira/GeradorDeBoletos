@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using GeradorDeBoletos.Domain.Features.Bancos;
 using GeradorDeBoletos.Services.Features.Bancos;
+using GeradorDeBoletos.Web.API.Attributes;
 using GeradorDeBoletos.Web.API.DTOs.Features.Bancos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Bancos;
 
+[Authentication]
 [Route("api/[controller]")]
 [ApiController]
 public class BancoController : ControllerBase
