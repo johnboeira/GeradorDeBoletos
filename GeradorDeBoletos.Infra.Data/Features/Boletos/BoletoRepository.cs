@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeradorDeBoletos.Infra.Data.Features.Boletos;
 
-public class BoletoRepository
+public class BoletoRepository : IBoletoRepository
 {
     private GerardorDeBoletosDbContext _dbContext;
 
@@ -22,6 +22,7 @@ public class BoletoRepository
     public async Task<IEnumerable<Boleto>> BuscaTodos()
     {
         return await _dbContext.Boletos
+            .AsNoTracking()
             .Include(b => b.Banco)
             .ToListAsync();
     }
@@ -29,6 +30,7 @@ public class BoletoRepository
     public async Task<Boleto> Busca(int id)
     {
         return await _dbContext.Boletos
+             .AsNoTracking()
             .Include(b => b.Banco)
             .SingleOrDefaultAsync(b => b.Id == id);
     }

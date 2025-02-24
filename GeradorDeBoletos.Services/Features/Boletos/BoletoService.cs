@@ -1,18 +1,17 @@
-﻿using GeradorDeBoletos.Domain.Features.Boletos;
+﻿using GeradorDeBoletos.Domain.Features.Bancos;
+using GeradorDeBoletos.Domain.Features.Boletos;
 using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
-using GeradorDeBoletos.Infra.Data.Features.Bancos;
-using GeradorDeBoletos.Infra.Data.Features.Boletos;
 using Microsoft.Extensions.Logging;
 
 namespace GeradorDeBoletos.Services.Features.Boletos;
 
 public class BoletoService
 {
-    public BoletoRepository _boletoRepository;
-    public BancoRepository _bancoRepository;
+    public readonly IBoletoRepository _boletoRepository;
+    public readonly IBancoRepository _bancoRepository;
     private ILogger<BoletoService> _logger;
 
-    public BoletoService(BoletoRepository boletoRepository, BancoRepository bancoRepository, ILogger<BoletoService> logger)
+    public BoletoService(IBoletoRepository boletoRepository, IBancoRepository bancoRepository, ILogger<BoletoService> logger)
     {
         _boletoRepository = boletoRepository;
         _bancoRepository = bancoRepository;

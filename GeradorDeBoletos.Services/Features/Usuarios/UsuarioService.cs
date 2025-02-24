@@ -1,19 +1,17 @@
-﻿using GeradorDeBoletos.Domain.Features.Shared;
-using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
+﻿using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using GeradorDeBoletos.Domain.Features.Usuarios;
 using GeradorDeBoletos.Infra.Criptografia;
-using GeradorDeBoletos.Infra.Data.Features.Usuarios;
 using Microsoft.Extensions.Logging;
 
 namespace GeradorDeBoletos.Services.Features.Usuarios;
 
 public class UsuarioService
 {
-    public UsuarioRepository _usuarioRepository;
+    public IUsuarioRepository _usuarioRepository;
     private ILogger<UsuarioService> _logger;
     private SenhaEncriptador _senhaEncriptador;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, ILogger<UsuarioService> logger, SenhaEncriptador senhaEncriptador)
+    public UsuarioService(IUsuarioRepository usuarioRepository, ILogger<UsuarioService> logger, SenhaEncriptador senhaEncriptador)
     {
         _usuarioRepository = usuarioRepository;
         _logger = logger;

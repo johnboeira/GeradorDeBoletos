@@ -1,6 +1,7 @@
 ﻿using GeradorDeBoletos.Domain.Features.GeradorDeToken;
 using GeradorDeBoletos.Domain.Features.Shared;
 using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
+using GeradorDeBoletos.Domain.Features.Usuarios;
 using GeradorDeBoletos.Infra.Auth;
 using GeradorDeBoletos.Infra.Criptografia;
 using GeradorDeBoletos.Infra.Data.Features.Usuarios;
@@ -11,11 +12,11 @@ namespace GeradorDeBoletos.Services.Features.GeradorDeToken;
 public class GeradorDeTokenService
 {
     private readonly SenhaEncriptador _senhaEncriptador;
-    private readonly UsuarioRepository _usuarioRepository;
+    private readonly IUsuarioRepository _usuarioRepository;
     private readonly IGeradorDeTokenDeAcesso _geradorJwtToken;
     private readonly ILogger<GeradorDeTokenService> _logger;
 
-    public GeradorDeTokenService(SenhaEncriptador senhaEncriptador, UsuarioRepository usuarioRepository, IGeradorDeTokenDeAcesso geradorJwtToken, ILogger<GeradorDeTokenService> logger)
+    public GeradorDeTokenService(SenhaEncriptador senhaEncriptador, IUsuarioRepository usuarioRepository, IGeradorDeTokenDeAcesso geradorJwtToken, ILogger<GeradorDeTokenService> logger)
     {
         _senhaEncriptador = senhaEncriptador;
         _usuarioRepository = usuarioRepository;

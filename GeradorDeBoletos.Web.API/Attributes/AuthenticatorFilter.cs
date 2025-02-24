@@ -1,6 +1,6 @@
-﻿using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
-using GeradorDeBoletos.Domain.Features.Shared;
-using GeradorDeBoletos.Infra.Data.Features.Usuarios;
+﻿using GeradorDeBoletos.Domain.Features.Shared;
+using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
+using GeradorDeBoletos.Domain.Features.Usuarios;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace GeradorDeBoletos.Web.API.Attributes;
@@ -8,9 +8,9 @@ namespace GeradorDeBoletos.Web.API.Attributes;
 public class AuthenticatorFilter : IAsyncAuthorizationFilter
 {
     private readonly IValidadorToken _validadorToken;
-    private readonly UsuarioRepository _usuarioRepository;
+    private readonly IUsuarioRepository _usuarioRepository;
 
-    public AuthenticatorFilter(IValidadorToken validadorToken, UsuarioRepository usuarioRepository)
+    public AuthenticatorFilter(IValidadorToken validadorToken, IUsuarioRepository usuarioRepository)
     {
         _validadorToken = validadorToken;
         _usuarioRepository = usuarioRepository;

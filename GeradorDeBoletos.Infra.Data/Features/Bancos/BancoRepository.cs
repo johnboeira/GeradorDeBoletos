@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeradorDeBoletos.Infra.Data.Features.Bancos;
 
-public class BancoRepository
+public class BancoRepository : IBancoRepository
 {
     private GerardorDeBoletosDbContext _dbContext;
 
@@ -19,11 +19,6 @@ public class BancoRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    /// <summary>
-    /// Busca usando asNoTracking
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
     public async Task<bool> ExisteAsync(int id)
     {
         return await _dbContext.Bancos
@@ -31,10 +26,6 @@ public class BancoRepository
             .AnyAsync(b => b.Id == id);
     }
 
-    /// <summary>
-    /// Busca usando asNoTracking
-    /// </summary>
-    /// <returns></returns>
     public async Task<IEnumerable<Banco>> BuscaTodosAsync()
     {
         return await _dbContext.Bancos
@@ -42,11 +33,6 @@ public class BancoRepository
             .ToListAsync();
     }
 
-    /// <summary>
-    /// Busca usando asNoTracking
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
     public async Task<Banco> BuscaAsync(int id)
     {
         return await _dbContext.Bancos

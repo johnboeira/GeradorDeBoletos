@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeradorDeBoletos.Infra.Data.Features.Usuarios;
 
-public class UsuarioRepository
+public class UsuarioRepository : IUsuarioRepository
 {
     private GerardorDeBoletosDbContext _dbContext;
 

@@ -1,6 +1,9 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using GeradorDeBoletos.Domain.Features.Bancos;
+using GeradorDeBoletos.Domain.Features.Boletos;
 using GeradorDeBoletos.Domain.Features.Shared;
+using GeradorDeBoletos.Domain.Features.Usuarios;
 using GeradorDeBoletos.Infra.Auth;
 using GeradorDeBoletos.Infra.Criptografia;
 using GeradorDeBoletos.Infra.Data;
@@ -29,14 +32,14 @@ public class Program
         builder.Services.AddDbContext<GerardorDeBoletosDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        builder.Services.AddScoped<BancoRepository>();
+        builder.Services.AddScoped<IBancoRepository, BancoRepository>();
         builder.Services.AddScoped<BancoService>();
 
-        builder.Services.AddScoped<BoletoRepository>();
+        builder.Services.AddScoped<IBoletoRepository, BoletoRepository>();
         builder.Services.AddScoped<BoletoService>();
 
         builder.Services.AddScoped<SenhaEncriptador>();
-        builder.Services.AddScoped<UsuarioRepository>();
+        builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         builder.Services.AddScoped<UsuarioService>();
 
         var minutosDeDuracao = builder.Configuration.GetValue<uint>("Settings:JWT:minutosDeDuracao");

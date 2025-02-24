@@ -5,9 +5,9 @@ namespace GeradorDeBoletos.Services.Features.Bancos;
 
 public class BancoService
 {
-    public BancoRepository _bancoRepository;
+    public readonly IBancoRepository _bancoRepository;
 
-    public BancoService(BancoRepository bancoRepository)
+    public BancoService(IBancoRepository bancoRepository)
     {
         _bancoRepository = bancoRepository;
     }
