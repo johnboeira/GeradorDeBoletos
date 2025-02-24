@@ -41,7 +41,6 @@ public class BancoController : ControllerBase
         return Ok(bancoDTO);
     }
 
-    //400 - fluent
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] BancoCriarDTO bancoDTO)
     {

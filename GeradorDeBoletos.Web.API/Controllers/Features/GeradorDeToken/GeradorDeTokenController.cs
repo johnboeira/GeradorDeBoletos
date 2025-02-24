@@ -19,8 +19,8 @@ public class GeradorDeTokenController : ControllerBase
         _geradorDeTokenService = geradorDeTokenService;
     }
 
-    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
     [HttpPost]
+    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
     public async Task<IActionResult> Post([FromBody] LoginDTO usuarioDTO)
     {
         var login = _mapper.Map<Login>(usuarioDTO);

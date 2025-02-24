@@ -23,7 +23,9 @@ public class BoletoCriarDTO
 
             RuleFor(x => x.CPFCNPJPagador)
                 .NotEmpty().WithMessage("O CPF/CNPJ do pagador é obrigatório")
-                .MaximumLength(20).WithMessage("O CPF/CNPJ do pagador deve ter no máximo 20 caracteres");
+                .MaximumLength(20).WithMessage("O CPF/CNPJ do pagador deve ter no máximo 20 caracteres")
+                .Matches(@"^(?:\d{3}\.?\d{3}\.?\d{3}\-?\d{2}|\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2})$")
+                .WithMessage("O CPF/CNPJ do pagador deve estar em um formato válido (CPF ou CNPJ)");
 
             RuleFor(x => x.NomeBeneficiario)
                 .NotEmpty().WithMessage("O nome do beneficiário é obrigatório")
@@ -31,7 +33,9 @@ public class BoletoCriarDTO
 
             RuleFor(x => x.CPFCNPJBeneficiario)
                 .NotEmpty().WithMessage("O CPF/CNPJ do beneficiário é obrigatório")
-                .MaximumLength(20).WithMessage("O CPF/CNPJ do beneficiário deve ter no máximo 20 caracteres");
+                .MaximumLength(20).WithMessage("O CPF/CNPJ do beneficiário deve ter no máximo 20 caracteres")
+                .Matches(@"^(?:\d{3}\.?\d{3}\.?\d{3}\-?\d{2}|\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2})$")
+                .WithMessage("O CPF/CNPJ do beneficiário deve estar em um formato válido (CPF ou CNPJ)");
 
             RuleFor(x => x.Valor)
                 .GreaterThan(0).WithMessage("O valor deve ser maior que zero");
