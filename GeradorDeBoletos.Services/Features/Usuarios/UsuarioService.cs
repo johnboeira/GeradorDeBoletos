@@ -21,8 +21,7 @@ public class UsuarioService
     public async Task<string> CriarUsuarioAsync(Usuario usuario)
     {
         var usuarioJaExiste = await _usuarioRepository.ExistePorEmailAsync(usuario.Email);
-
-        if (usuarioJaExiste == true)
+        if (usuarioJaExiste)
         {
             var exception = new AlreadyExistsException($"Já existe usuário com email: {usuario.Email}");
             _logger.LogError(exception.Message);

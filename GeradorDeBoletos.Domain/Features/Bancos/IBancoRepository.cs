@@ -10,11 +10,18 @@ public interface IBancoRepository
     public Task CriaAsync(Banco banco);
 
     /// <summary>
-    /// Busca usando asNoTracking
+    /// Verifica se existe por id
     /// </summary>
     /// <param name="id">id para validar se existe</param>
     /// <returns>True se existir</returns>
     public Task<bool> ExisteAsync(int id);
+
+    /// <summary>
+    /// Verifica se existe por codigo
+    /// </summary>
+    /// <param name="codigo"></param>
+    /// <returns>True se existir</returns>
+    public Task<bool> ExistePorCodigoAsync(string codigo);
 
     /// <summary>
     /// Busca usando asNoTracking

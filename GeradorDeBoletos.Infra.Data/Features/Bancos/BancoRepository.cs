@@ -26,6 +26,13 @@ public class BancoRepository : IBancoRepository
             .AnyAsync(b => b.Id == id);
     }
 
+    public async Task<bool> ExistePorCodigoAsync(string codigo)
+    {
+        return await _dbContext.Bancos
+           .AsNoTracking()
+           .AnyAsync(b => b.CodigoBanco == codigo);
+    }
+
     public async Task<IEnumerable<Banco>> BuscaTodosAsync()
     {
         return await _dbContext.Bancos
@@ -39,4 +46,6 @@ public class BancoRepository : IBancoRepository
             .AsNoTracking()
             .SingleOrDefaultAsync(b => b.Id == id);
     }
+
+
 }
