@@ -7,12 +7,15 @@ using GeradorDeBoletos.Web.API.Attributes;
 using GeradorDeBoletos.Web.API.DTOs.Features.Bancos;
 using GeradorDeBoletos.Web.API.DTOs.Features.Boletos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Bancos;
 
 [Authentication]
 [Route("api/[controller]")]
 [ApiController]
+[ProducesResponseType(typeof(InvalidLogin), StatusCodes.Status401Unauthorized)]
+[ProducesResponseType(typeof(SecurityTokenInvalidSignatureException), StatusCodes.Status401Unauthorized)]
 public class BancoController : ControllerBase
 {
     private BancoService _bancoService;

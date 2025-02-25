@@ -1,4 +1,5 @@
 ﻿using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
+using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using System.Text.Json;
 
@@ -44,6 +45,9 @@ public class GlobalErrorHandlingMiddleware
         {
             message = ex.Message;
             status = HttpStatusCode.BadRequest;
+        } else if (exceptionType == typeof(SecurityTokenInvalidSignatureException)) {
+            message = ex.Message;
+            status = HttpStatusCode.Unauthorized;
         }
         else
         {

@@ -6,6 +6,7 @@ using GeradorDeBoletos.Services.Features.Boletos;
 using GeradorDeBoletos.Web.API.Attributes;
 using GeradorDeBoletos.Web.API.DTOs.Features.Boletos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Boletos;
@@ -13,6 +14,8 @@ namespace GeradorDeBoletos.Web.API.Controllers.Features.Boletos;
 [Route("api/[controller]")]
 [ApiController]
 [Authentication]
+[ProducesResponseType(typeof(InvalidLogin), StatusCodes.Status401Unauthorized)]
+[ProducesResponseType(typeof(SecurityTokenInvalidSignatureException), StatusCodes.Status401Unauthorized)]
 public class BoletoController : ControllerBase
 {
     private BoletoService _boletoService;
