@@ -3,6 +3,8 @@ using GeradorDeBoletos.Domain.Features.Usuarios;
 using GeradorDeBoletos.Web.API.DTOs.Features.Usuarios;
 using GeradorDeBoletos.Services.Features.Usuarios;
 using Microsoft.AspNetCore.Mvc;
+using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
+using FluentValidation;
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Usuarios;
 
@@ -19,9 +21,11 @@ public class UsuarioController : ControllerBase
         _usuarioService = usuarioService;
     }
 
-    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] UsuarioCriarDTO usuarioDTO)
+    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ValidationException), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(AlreadyExistsException), StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> Cria([FromBody] UsuarioCriarDTO usuarioDTO)
     {
         var usuario = _mapper.Map<Usuario>(usuarioDTO);
 

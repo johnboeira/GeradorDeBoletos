@@ -19,7 +19,7 @@ public class BoletoRepository : IBoletoRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<Boleto>> BuscaTodos()
+    public async Task<IEnumerable<Boleto>> BuscaTodosAsync()
     {
         return await _dbContext.Boletos
             .AsNoTracking()
@@ -27,7 +27,7 @@ public class BoletoRepository : IBoletoRepository
             .ToListAsync();
     }
 
-    public async Task<Boleto> Busca(int id)
+    public async Task<Boleto> BuscaAsync(int id)
     {
         return await _dbContext.Boletos
              .AsNoTracking()

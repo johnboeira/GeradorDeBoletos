@@ -21,7 +21,6 @@ public class BoletoService
     public async Task CriarBoletoAsync(Boleto boleto)
     {
         var bancoExiste = await _bancoRepository.ExisteAsync(boleto.BancoId);
-
         if (bancoExiste is false)
         {
             var exception = new NotFoundException($"Não foi encontrado banco com id: {boleto.BancoId}");
@@ -34,11 +33,19 @@ public class BoletoService
 
     public async Task<IEnumerable<Boleto>> BuscaTodos()
     {
-        return await _boletoRepository.BuscaTodos();
+        return await _boletoRepository.BuscaTodosAsync();
     }
 
     public async Task<Boleto> Busca(int id)
     {
-        return await _boletoRepository.Busca(id);
+        var boleto = await  _boletoRepository.BuscaAsync(id);
+        if (boleto is null)
+        {
+            var exception = new NotFoundException($"Não foi encontrado boleto com id: {id}");
+            _logger.LogError(exception.Message);
+            throw exception;
+        }
+
+        return boleto;
     }
 }

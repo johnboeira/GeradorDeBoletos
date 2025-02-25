@@ -2,9 +2,7 @@
 using GeradorDeBoletos.Domain.Features.Shared;
 using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using GeradorDeBoletos.Domain.Features.Usuarios;
-using GeradorDeBoletos.Infra.Auth;
 using GeradorDeBoletos.Infra.Criptografia;
-using GeradorDeBoletos.Infra.Data.Features.Usuarios;
 using Microsoft.Extensions.Logging;
 
 namespace GeradorDeBoletos.Services.Features.GeradorDeToken;

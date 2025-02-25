@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using GeradorDeBoletos.Domain.Features.Boletos;
+using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using GeradorDeBoletos.Services.Features.Boletos;
 using GeradorDeBoletos.Web.API.Attributes;
 using GeradorDeBoletos.Web.API.DTOs.Features.Boletos;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Boletos;
 
@@ -22,7 +25,8 @@ public class BoletoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    [ProducesResponseType(typeof(List<BoletoResumoDTO>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> BuscaTodos()
     {
         var boletosDB = await _boletoService.BuscaTodos();
 
@@ -32,7 +36,9 @@ public class BoletoController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> Get(int id)
+    [ProducesResponseType(typeof(BoletoDetalheDTO), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(NotFoundException), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> BuscaPorId(int id)
     {
         var boletoDB = await _boletoService.Busca(id);
 
@@ -42,12 +48,15 @@ public class BoletoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] BoletoCriarDTO boletoDTO)
+    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ValidationException), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(NotFoundException), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Cria([FromBody] BoletoCriarDTO boletoDTO)
     {
         var boleto = _mapper.Map<Boleto>(boletoDTO);
 
         await _boletoService.CriarBoletoAsync(boleto);
 
-        return Ok();
+        return Created(string.Empty, boleto.Id);
     }
 }

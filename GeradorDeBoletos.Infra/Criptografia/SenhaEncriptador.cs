@@ -5,7 +5,7 @@ namespace GeradorDeBoletos.Infra.Criptografia;
 
 public class SenhaEncriptador
 {
-    public string Encriptar(string senha)
+    public virtual string Encriptar(string senha)
     {
         var chaveAdicional = "qualquerstringaqui";
 
