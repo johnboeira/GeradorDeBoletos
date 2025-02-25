@@ -21,7 +21,7 @@ será necessário também importar o environment para usar a variável global do
 
 # Autenticação
 
-ao chamar o request "GerarToken" um script js (em scripts) irá pegar o token devolvido e salvar na var global "AuthToken",com isso você estará autenticado para chamar os endpoints de Banco e Boleto.
+Ao chamar o request "GerarToken" um script js (em scripts) irá pegar o token devolvido e salvar na var global "AuthToken", com isso você estará autenticado para chamar os endpoints de Banco e Boleto.
 De forma alternativa, você pode chamar o endpoint "GeradorDeToken" no swagger, pegar o valor e colocar no input do swagger, há mais instruções ao clicar em "Authorize"
 
 OBS: A chave de assinatura está em appsettings.Development.json, podendo ser alterada. Em ambiente de produção essa chave deve ficar ocultar e ser trocada de tempos em tempos.
@@ -34,15 +34,15 @@ PgAdmin
 Visual Studio 2022
 Postman
 
-FluentValidation
-JWT Token e Bearer
-AutoMapper
-Serilog (Logando em console e txt)
-XUnit
-Moq
+FluentValidation  
+JWT Token e Bearer  
+AutoMapper  
+Serilog (Logando em console e txt)  
+XUnit  
+Moq 
 
-Handler de exceptions global (Há uma alternativa como padrão Result)
-Alguns conceitos do DDD 
-Clean Architecture 
+Handler de exceptions global (Há uma alternativa como padrão Result)  
+Alguns conceitos do DDD  
+Clean Architecture  
 
 Como alternativa aos services da camada de services poderia ser usado o padrão CQRS (um exemplo simples está em: https://github.com/johnboeira/CQRS_Example.git)
