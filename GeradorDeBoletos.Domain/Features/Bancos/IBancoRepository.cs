@@ -32,7 +32,7 @@ public interface IBancoRepository
     /// <summary>
     /// Busca usando asNoTracking
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="codigo"></param>
     /// <returns>Retorna o banco</returns>
-    public Task<Banco> BuscaAsync(int id);
+    public Task<Banco> BuscaPorCodigoAsync(string codigo);
 }

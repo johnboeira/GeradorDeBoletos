@@ -33,8 +33,16 @@ public class BancoService
         return await _bancoRepository.BuscaTodosAsync();
     }
 
-    public async Task<Banco> Busca(int id)
+    public async Task<Banco> BuscaPorCodigoAsync(string codigo)
     {
-        return await _bancoRepository.BuscaAsync(id);
+        var banco = await _bancoRepository.BuscaPorCodigoAsync(codigo);
+        if (banco is null)
+        {
+            var exception = new NotFoundException($"Banco não encontrado: {codigo}");
+            _logger.LogError(exception.Message);
+            throw exception;
+        }
+
+        return banco;
     }
 }

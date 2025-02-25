@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using GeradorDeBoletos.Domain.Features.Bancos;
+using GeradorDeBoletos.Domain.Features.Shared.Exceptions;
 using GeradorDeBoletos.Services.Features.Bancos;
 using GeradorDeBoletos.Web.API.Attributes;
 using GeradorDeBoletos.Web.API.DTOs.Features.Bancos;
+using GeradorDeBoletos.Web.API.DTOs.Features.Boletos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeradorDeBoletos.Web.API.Controllers.Features.Bancos;
@@ -22,7 +25,8 @@ public class BancoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    [ProducesResponseType(typeof(List<BoletoResumoDTO>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> BuscaTodos()
     {
         var bancosDB = await _bancoService.BuscaTodos();
 
@@ -31,10 +35,12 @@ public class BancoController : ControllerBase
         return Ok(bancosDTO);
     }
 
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> Get(int id)
+    [HttpGet("{codigo}")]
+    [ProducesResponseType(typeof(BoletoDetalheDTO), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(NotFoundException), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> BuscaPorCodigo(string codigo)
     {
-        var bancoDB = await _bancoService.Busca(id);
+        var bancoDB = await _bancoService.BuscaPorCodigoAsync(codigo);
 
         var bancoDTO = _mapper.Map<BancoDetalheDTO>(bancoDB);
 
@@ -42,7 +48,9 @@ public class BancoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] BancoCriarDTO bancoDTO)
+    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ValidationException), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Cria([FromBody] BancoCriarDTO bancoDTO)
     {
         var banco = _mapper.Map<Banco>(bancoDTO);
 

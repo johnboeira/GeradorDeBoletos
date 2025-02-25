@@ -40,11 +40,11 @@ public class BancoRepository : IBancoRepository
             .ToListAsync();
     }
 
-    public async Task<Banco> BuscaAsync(int id)
+    public async Task<Banco> BuscaPorCodigoAsync(string codigo)
     {
         return await _dbContext.Bancos
             .AsNoTracking()
-            .SingleOrDefaultAsync(b => b.Id == id);
+            .SingleOrDefaultAsync(b => b.CodigoBanco == codigo);
     }
 
 
