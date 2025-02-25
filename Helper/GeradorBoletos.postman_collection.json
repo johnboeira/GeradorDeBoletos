@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "6119253d-9135-4c14-b2f3-b9ecd8c021e5",
+		"name": "GeradorBoletos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31667893"
+	},
+	"item": [
+		{
+			"name": "Banco",
+			"item": [
+				{
+					"name": "Validação",
+					"item": [
+						{
+							"name": "Cria banco com mesmo codigo",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{AuthToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nomeBanco\": \"inter2\",\r\n  \"codigoBanco\": \"ii234\",\r\n  \"percentualDeJuros\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7173/api/banco",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7173",
+									"path": [
+										"api",
+										"banco"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cria banco",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeBanco\": \"inter2\",\r\n  \"codigoBanco\": \"i24242\",\r\n  \"percentualDeJuros\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7173/api/banco",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"banco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca bancos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7173/api/banco",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"banco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca banco por codigo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7173/api/banco/i24242",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"banco",
+								"i24242"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Boletos",
+			"item": [
+				{
+					"name": "Validações",
+					"item": [
+						{
+							"name": "Criar boleto cnpj invalido",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{AuthToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nomePagador\": \"Juca\",\r\n  \"cpfcnpjPagador\": \"123.123.123-12\",\r\n  \"nomeBeneficiario\": \"Inter\",\r\n  \"cpfcnpjBeneficiario\": \"11.111.111/0000-001\",\r\n  \"valor\": 2000,\r\n  \"dataVencimento\": \"2025-12-20\",\r\n  \"observacao\": \"Nenhuma\",\r\n  \"bancoId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7173/api/boleto",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7173",
+									"path": [
+										"api",
+										"boleto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar boleto cpf invalido",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{AuthToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nomePagador\": \"Juca\",\r\n  \"cpfcnpjPagador\": \"123.123.123-121\",\r\n  \"nomeBeneficiario\": \"Inter\",\r\n  \"cpfcnpjBeneficiario\": \"11.111.111/0000-00\",\r\n  \"valor\": 2000,\r\n  \"dataVencimento\": \"2025-12-20\",\r\n  \"observacao\": \"Nenhuma\",\r\n  \"bancoId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7173/api/boleto",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7173",
+									"path": [
+										"api",
+										"boleto"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Criar boleto vencimento longo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomePagador\": \"Juca\",\r\n  \"cpfcnpjPagador\": \"123.123.123-12\",\r\n  \"nomeBeneficiario\": \"Inter\",\r\n  \"cpfcnpjBeneficiario\": \"11.111.111/0000-00\",\r\n  \"valor\": 2000,\r\n  \"dataVencimento\": \"2025-12-20\",\r\n  \"observacao\": \"Nenhuma\",\r\n  \"bancoId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7173/api/boleto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"boleto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca boletos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7173/api/boleto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"boleto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca boletos por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7173/api/boleto/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"boleto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca o boleto vencido",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7173/api/boleto/222",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"boleto",
+								"222"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca o boleto de hoje",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7173/api/boleto/444",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"boleto",
+								"444"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Cria Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AuthToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"juca@gmail.com\",\r\n  \"senha\": \"umasenhaqualquer123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7173/api/usuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GeradorDeToken",
+			"item": [
+				{
+					"name": "Validação de token",
+					"item": [
+						{
+							"name": "Busca bancos Com token invalido",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIzIiwibmJmIjoxNzQwMzU5NjgyLCJleHAiOjE3NDA0MTk2ODIsImlhdCI6MTc0MDM1OTY4Mn0.r1lnYzgpH7FwPGBjomiloJDrQpb9GcKx2tm6FzehuDa",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7173/api/banco",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7173",
+									"path": [
+										"api",
+										"banco"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca bancos Com usuario do token invalido Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI1MzIiLCJuYmYiOjE3NDAzNTk1OTcsImV4cCI6MTc0MDQxOTU5NywiaWF0IjoxNzQwMzU5NTk3fQ.st_c557K6HcSzNEJvblZ0ce2x2Dqk8tce8Rb3rhvowQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7173/api/banco",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7173",
+									"path": [
+										"api",
+										"banco"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GerarToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const token = pm.response.text();\r",
+									"\r",
+									"if (token) {\r",
+									"    pm.environment.set(\"AuthToken\", \"Bearer \"+token);\r",
+									"} else {\r",
+									"    console.error(\"Token não encontrado\");\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"juca@gmail.com\",\r\n  \"senha\": \"umasenhaqualquer123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7173/api/GeradorDeToken",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"GeradorDeToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GerarToken Login Incorreto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"juca@gmail.com\",\r\n  \"senha\": \"umasenhaqualquer123123A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7173/api/GeradorDeToken",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7173",
+							"path": [
+								"api",
+								"GeradorDeToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
